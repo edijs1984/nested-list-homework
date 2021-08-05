@@ -1,7 +1,7 @@
-import React, { ReactFragment } from "react";
+import React from "react";
 
-import { Button, SmButton } from "./components/Button.styles";
-import List from "./List";
+import { Button } from "./components/Button.styles";
+import ListMain from "./ListMain";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <Button>Add brand</Button>
         <Button>Add product</Button>
       </div>
-      <List />
+      <ListMain />
     </div>
   );
 };

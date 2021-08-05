@@ -1,16 +1,15 @@
 import React from "react";
-import { Colors, MotherLi, Span, Li } from "./components/styleVariables";
-import { Button, SmButton } from "./components/Button.styles";
-import { data } from "./response";
+import { MotherLi, Span, Li } from "./components/styleVariables";
+import { SmButton } from "./components/Button.styles";
 
-export const List = (props) => {
-  const mapped = data.map((item) => item.categories);
+//
+export const List = ({ data }) => {
   return (
     <div>
       <Li>
         <ul>
-          {mapped.map((item) => {
-            return item.map((categories) => {
+          {data &&
+            data.map((categories) => {
               return (
                 <Li>
                   {/* categories  */}
@@ -45,8 +44,7 @@ export const List = (props) => {
                   })}
                 </Li>
               );
-            });
-          })}
+            })}
         </ul>
       </Li>
     </div>
