@@ -1,39 +1,72 @@
 import React, { useState, createContext, useEffect } from "react";
 import jsondata from "../responseData.json";
+
+//
 export const DataContext = createContext();
 export const DataProvider = (props) => {
-  const [value, setValue] = useState([]);
+  //
+  const [value, setValue] = useState();
+  const [count, setCount] = useState(0);
+  const [modalIsOpen, setModalIsOpen] = useState({ open: false, type: "" });
 
-  const arr = [];
-
+  //
   useEffect(() => {
-    // if (value !== []) {
-    //   console.log(value);
-    //   return;
-    // }
     setValue(jsondata.categories);
-    console.log(value + 1);
   }, []);
 
-  const deleteCategory = (id) => {
-    const res = value.filter((val) => val.id !== id);
-    setValue(res);
-  };
+  class Remove {
+    static category(id) {
+      value.splice(id, 1);
+      setCount(count + 1);
+    }
+    static brand(val, brand) {
+      value[val].brands.splice(brand, 1);
+      setCount(count + 1);
+    }
+    static product(val, brand, prod) {
+      value[val].brands[brand].products.splice(prod, 1);
+      setCount(count + 1);
+    }
+  }
 
-  const deleteBrand = async (id, id2) => {
-    arr.push(value);
-    arr[0][id].brands.splice(id2, 1);
-    setValue(arr[0]);
-    console.log(arr[0]);
-  };
+  class Create {
+    static category({ name }) {
+      console.log({ name });
+      value.push({
+        id: new Date().getTime(),
+        name: name,
+        brands: [],
+      });
+      setCount(count + 1);
+      console.log(value);
+    }
 
-  const deleteProduct = (id, id2) => {
-    console.log(id);
-  };
+    static brand({ ctx, name }) {
+      value[ctx].brands.push({
+        id: new Date().getTime(),
+        name: name,
+        products: [],
+      });
+      setCount(count + 1);
+    }
+    static product({ ctx, brandx, name }) {
+      value[ctx].brands[brandx].products.push({
+        id: new Date().getTime(),
+        name: name,
+      });
+      setCount(count + 1);
+    }
+  }
 
   return (
     <DataContext.Provider
-      value={{ value, setValue, deleteCategory, deleteProduct, deleteBrand }}
+      value={{
+        value,
+        Remove,
+        Create,
+        modalIsOpen,
+        setModalIsOpen,
+      }}
     >
       {props.children}
     </DataContext.Provider>
