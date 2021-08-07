@@ -3,9 +3,9 @@ import Dropdown from "./Dropdown";
 import { ModalInput } from "./styleComponets/Modal.styles";
 import { Button } from "./styleComponets/Button.styles";
 import { DataContext } from "../context/DataContext";
-export const Createproduct = () => {
-  const { value, Create } = useContext(DataContext);
 
+export const Createproduct = () => {
+  const { Create } = useContext(DataContext);
   const [selectedCat, setSelectedCat] = useState();
   const [selectedBrand, setSelectedBrand] = useState();
   const [newProduct, setNewProduct] = useState();
@@ -16,22 +16,26 @@ export const Createproduct = () => {
       brandx: parseInt(selectedBrand),
       name: newProduct,
     });
+    setNewProduct("");
   };
   const disabled = !selectedCat || !selectedBrand || !newProduct;
-  console.log(disabled);
+
   return (
     <div>
+      <p>
+        <h1>Create Product</h1>
+      </p>
       <div>Select category</div>
       <Dropdown type={"category"} setSelected={(e) => setSelectedCat(e)} />
       {selectedCat && (
-        <>
-          <>Select brand</>
+        <div>
+          <div>Select brand</div>
           <Dropdown
             type={"brand"}
             category={selectedCat}
             setSelected={(e) => setSelectedBrand(e)}
           />
-        </>
+        </div>
       )}
 
       <div>Brand name</div>

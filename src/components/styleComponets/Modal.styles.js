@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Colors } from "./styleVariables";
 import { MdClose } from "react-icons/md";
 
 export const Modalcontainer = styled.div``;
@@ -37,13 +36,6 @@ export const ModalContent = styled.div`
   color: #141414;
   p {
     margin-bottom: 1rem;
-  }
-
-  button {
-    padding: 10px 24px;
-    background: #141414;
-    color: #fff;
-    border: none;
   }
 `;
 

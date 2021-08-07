@@ -1,34 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Createbrand } from "./Createbrand";
 import { CreateCategory } from "./CreateCategory";
 import { Createproduct } from "./Createproduct";
-import CategoryDropdown from "./Dropdown";
 import {
   ModalBg,
   ModalWrapper,
   ModalContent,
   CloseModalButton,
-  ModalInput,
-  ModalSelect,
 } from "./styleComponets/Modal.styles";
+import { DataContext } from "../context/DataContext";
 
-const Modal = ({ modal }) => {
-  const [selected, setSelected] = useState({
-    category: null,
-    brand: null,
-  });
-  console.log(selected);
+const Modal = () => {
+  const { HandleModal, modalType, modalIsOpen } = useContext(DataContext);
+
   return (
     <>
-      {modal.visible ? (
+      {modalIsOpen ? (
         <ModalBg>
           <ModalWrapper>
             <ModalContent>
-              {/* <Createbrand /> */}
-              {/* <CreateCategory /> */}
-              <Createproduct />
+              {modalType === "category" ? (
+                <CreateCategory />
+              ) : modalType === "brand" ? (
+                <Createbrand />
+              ) : (
+                <Createproduct />
+              )}
             </ModalContent>
-            <CloseModalButton aria-label="Close modal" />
+            <CloseModalButton
+              aria-label="Close modal"
+              onClick={() => HandleModal.close()}
+            />
           </ModalWrapper>
         </ModalBg>
       ) : null}

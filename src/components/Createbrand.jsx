@@ -4,17 +4,20 @@ import { ModalInput } from "./styleComponets/Modal.styles";
 import { Button } from "./styleComponets/Button.styles";
 import { DataContext } from "../context/DataContext";
 export const Createbrand = () => {
-  const { value, Create } = useContext(DataContext);
+  const { Create } = useContext(DataContext);
 
   const [selected, setSelected] = useState();
   const [newBrand, setNewBrand] = useState();
-  const disabled = selected === newBrand;
-  console.log(disabled);
+  const disabled = !selected || !newBrand;
   const createBrand = () => {
     Create.brand({ ctx: parseInt(selected, 10), name: newBrand });
+    setNewBrand("");
   };
   return (
     <div>
+      <p>
+        <h1>Create Brand</h1>
+      </p>
       <div>Select category</div>
       <Dropdown type={"category"} setSelected={(e) => setSelected(e)} />
       <div>Brand name</div>

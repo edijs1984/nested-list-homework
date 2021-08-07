@@ -7,7 +7,8 @@ export const DataProvider = (props) => {
   //
   const [value, setValue] = useState();
   const [count, setCount] = useState(0);
-  const [modalIsOpen, setModalIsOpen] = useState({ open: false, type: "" });
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(0);
 
   //
   useEffect(() => {
@@ -31,14 +32,12 @@ export const DataProvider = (props) => {
 
   class Create {
     static category({ name }) {
-      console.log({ name });
       value.push({
         id: new Date().getTime(),
         name: name,
         brands: [],
       });
       setCount(count + 1);
-      console.log(value);
     }
 
     static brand({ ctx, name }) {
@@ -58,14 +57,25 @@ export const DataProvider = (props) => {
     }
   }
 
+  class HandleModal {
+    static open(value) {
+      setModalIsOpen(true);
+      setModalType(value);
+    }
+    static close() {
+      setModalIsOpen(false);
+      setModalType("");
+    }
+  }
   return (
     <DataContext.Provider
       value={{
         value,
         Remove,
         Create,
+        HandleModal,
         modalIsOpen,
-        setModalIsOpen,
+        modalType,
       }}
     >
       {props.children}

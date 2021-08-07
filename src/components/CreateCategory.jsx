@@ -8,13 +8,16 @@ export const CreateCategory = () => {
 
   const [newCategory, setNewCategory] = useState();
   const disabled = !newCategory;
-  console.log(disabled);
+
   const createCategory = () => {
     Create.category({ name: newCategory });
-    setNewCategory();
+    setNewCategory("");
   };
   return (
     <div>
+      <p>
+        <h1>Create Category</h1>
+      </p>
       <div>Category name</div>
       <ModalInput
         onInput={(e) => setNewCategory(e.target.value)}

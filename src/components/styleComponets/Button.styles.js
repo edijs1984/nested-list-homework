@@ -14,6 +14,12 @@ export const Button = styled.button`
   :hover {
     color: ${Colors.orange};
   }
+  :disabled {
+    color: ${Colors.grey};
+    :hover {
+      color: ${Colors.grey};
+    }
+  }
 `;
 
 export const SmButton = styled.button`
