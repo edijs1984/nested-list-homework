@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import { Colors } from "./styleVariables";
 export const GlobalStyle = createGlobalStyle`
 *{
   box-sizing: border-box;
@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  color: black;
+  color: ${Colors.dark};
+
 }
 `;

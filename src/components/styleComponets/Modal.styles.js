@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-
+import { Colors } from "./styleVariables";
 export const ModalBg = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -14,9 +14,9 @@ export const ModalBg = styled.div`
 export const ModalWrapper = styled.div`
   width: 500px;
   height: 400px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 2);
+  background: ${Colors.light};
+  color: ${Colors.dark};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,6 @@ export const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 1.8;
-  color: #141414;
   p {
     margin-bottom: 1rem;
   }
@@ -51,6 +50,7 @@ export const CloseModalButton = styled(MdClose)`
 export const ModalInput = styled.input`
   border-width: 1px;
   border-radius: 8px;
+  width: 230px;
   height: 40px;
   padding: 10px;
   margin: 10px;
@@ -64,4 +64,8 @@ export const ModalSelect = styled.select`
   padding: 10px;
   margin: 10px;
   outline: none;
+  background-color: white;
+  option:not(:checked) {
+    background-color: ${Colors.light};
+  }
 `;

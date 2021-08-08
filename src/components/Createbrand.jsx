@@ -3,12 +3,17 @@ import Dropdown from "./Dropdown";
 import { ModalInput } from "./styleComponets/Modal.styles";
 import { Button } from "./styleComponets/Button.styles";
 import { DataContext } from "../context/DataContext";
+
+//
 export const Createbrand = () => {
   const { Create } = useContext(DataContext);
-
+  //
   const [selected, setSelected] = useState();
   const [newBrand, setNewBrand] = useState();
+  //
+
   const btnDisabled = !selected || !newBrand || selected === "none";
+
   const createBrand = () => {
     Create.brand({ categoryIndex: parseInt(selected, 10), name: newBrand });
     setNewBrand("");
