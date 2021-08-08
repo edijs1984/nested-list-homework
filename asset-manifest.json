@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/nested-list-homework/static/js/main.f2629d3e.chunk.js",
-    "main.js.map": "/nested-list-homework/static/js/main.f2629d3e.chunk.js.map",
+    "main.js": "/nested-list-homework/static/js/main.1826f580.chunk.js",
+    "main.js.map": "/nested-list-homework/static/js/main.1826f580.chunk.js.map",
     "runtime-main.js": "/nested-list-homework/static/js/runtime-main.22f5df75.js",
     "runtime-main.js.map": "/nested-list-homework/static/js/runtime-main.22f5df75.js.map",
     "static/js/2.4114c926.chunk.js": "/nested-list-homework/static/js/2.4114c926.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.22f5df75.js",
     "static/js/2.4114c926.chunk.js",
-    "static/js/main.f2629d3e.chunk.js"
+    "static/js/main.1826f580.chunk.js"
   ]
 }
