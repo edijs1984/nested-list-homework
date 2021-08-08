@@ -7,7 +7,7 @@ export const CreateCategory = () => {
   const { Create } = useContext(DataContext);
 
   const [newCategory, setNewCategory] = useState();
-  const disabled = !newCategory;
+  const btnDisabled = !newCategory;
 
   const createCategory = () => {
     Create.category({ name: newCategory });
@@ -23,7 +23,7 @@ export const CreateCategory = () => {
         onInput={(e) => setNewCategory(e.target.value)}
         value={newCategory}
       />
-      <Button disabled={disabled} onClick={() => createCategory()}>
+      <Button disabled={btnDisabled} onClick={() => createCategory()}>
         Create
       </Button>
     </div>

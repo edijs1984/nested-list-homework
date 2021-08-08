@@ -18,7 +18,7 @@ export const Createproduct = () => {
     });
     setNewProduct("");
   };
-  const disabled = !selectedCat || !selectedBrand || !newProduct;
+  const btnDisabled = !selectedCat || !selectedBrand || !newProduct;
 
   return (
     <div>
@@ -43,7 +43,7 @@ export const Createproduct = () => {
         onInput={(e) => setNewProduct(e.target.value)}
         value={newProduct}
       />
-      <Button disabled={disabled} onClick={() => createProduct()}>
+      <Button disabled={btnDisabled} onClick={() => createProduct()}>
         Create
       </Button>
     </div>

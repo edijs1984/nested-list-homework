@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 
-export const Modalcontainer = styled.div``;
-
 export const ModalBg = styled.div`
   width: 100%;
   height: 100%;
@@ -15,7 +13,7 @@ export const ModalBg = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 500px;
-  height: 300px;
+  height: 400px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;

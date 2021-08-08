@@ -1,59 +1,64 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useImmer } from "use-immer";
 import jsondata from "../responseData.json";
 
 //
 export const DataContext = createContext();
 export const DataProvider = (props) => {
   //
-  const [value, setValue] = useState();
-  const [count, setCount] = useState(0);
+  const [value, setValue] = useImmer();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalType, setModalType] = useState(0);
 
   //
   useEffect(() => {
     setValue(jsondata.categories);
-  }, []);
+  }, [setValue]);
 
   class Remove {
-    static category(id) {
-      value.splice(id, 1);
-      setCount(count + 1);
+    static category(categoryIndex) {
+      setValue((draft) => {
+        draft.splice(categoryIndex, 1);
+      });
     }
-    static brand(val, brand) {
-      value[val].brands.splice(brand, 1);
-      setCount(count + 1);
+    static brand(categoryindex, brandIndex) {
+      setValue((draft) => {
+        draft[categoryindex].brands.splice(brandIndex, 1);
+      });
     }
-    static product(val, brand, prod) {
-      value[val].brands[brand].products.splice(prod, 1);
-      setCount(count + 1);
+    static product(categoryIndex, brandIndex, productIndex) {
+      setValue((draft) => {
+        draft[categoryIndex].brands[brandIndex].products.splice(
+          productIndex,
+          1
+        );
+      });
     }
   }
 
   class Create {
     static category({ name }) {
-      value.push({
-        id: new Date().getTime(),
-        name: name,
-        brands: [],
+      setValue((draft) => {
+        draft.push({ id: new Date().getTime(), name: name, brands: [] });
       });
-      setCount(count + 1);
     }
 
-    static brand({ ctx, name }) {
-      value[ctx].brands.push({
-        id: new Date().getTime(),
-        name: name,
-        products: [],
+    static brand({ categoryIndex, name }) {
+      setValue((draft) => {
+        draft[categoryIndex].brands.push({
+          id: new Date().getTime(),
+          name: name,
+          products: [],
+        });
       });
-      setCount(count + 1);
     }
-    static product({ ctx, brandx, name }) {
-      value[ctx].brands[brandx].products.push({
-        id: new Date().getTime(),
-        name: name,
+    static product({ categoryIndex, brandIndex, name }) {
+      setValue((draft) => {
+        draft[categoryIndex].brands[brandIndex].products.push({
+          id: new Date().getTime(),
+          name: name,
+        });
       });
-      setCount(count + 1);
     }
   }
 

@@ -12,16 +12,16 @@ import Modal from "../components/Modal";
 export const List = ({ modal }) => {
   const { Remove, value } = useContext(DataContext);
 
-  const category = (catx) => {
-    Remove.category(catx);
+  const category = (categoryIndex) => {
+    Remove.category(categoryIndex);
   };
 
-  const brands = (catx, brandx) => {
-    Remove.brand(catx, brandx);
+  const brands = (categoryIndex, brandIndex) => {
+    Remove.brand(categoryIndex, brandIndex);
   };
 
-  const product = (catx, brandx, prodx) => {
-    Remove.product(catx, brandx, prodx);
+  const product = (categoryIndex, brandIndex, productIndex) => {
+    Remove.product(categoryIndex, brandIndex, productIndex);
   };
 
   return (
@@ -30,35 +30,45 @@ export const List = ({ modal }) => {
       <Li>
         <ul>
           {value &&
-            value.map((categories, catx) => {
+            value.map((categories, categoryIndex) => {
               return (
                 <Li>
                   {/* categories  */}
                   <span key={categories.id}>
                     {categories.name}
-                    <SmButton onClick={() => category(catx)}>Delete</SmButton>
+                    <SmButton onClick={() => category(categoryIndex)}>
+                      Delete
+                    </SmButton>
                   </span>
 
                   {/* categorie brand  */}
-                  {categories.brands.map((brand, brandx) => {
+                  {categories.brands.map((brand, brandIndex) => {
                     return (
                       <MotherLi>
                         <Li>
                           <Span key={brand.id}>
                             {brand.name}
-                            <SmButton onClick={() => brands(catx, brandx)}>
+                            <SmButton
+                              onClick={() => brands(categoryIndex, brandIndex)}
+                            >
                               Delete
                             </SmButton>
                           </Span>
                         </Li>
                         <ul>
                           {/* products  */}
-                          {brand.products.map((prod, prodx) => {
+                          {brand.products.map((prod, productIndex) => {
                             return (
                               <MotherLi key={prod.id}>
                                 {prod.name}
                                 <SmButton
-                                  onClick={() => product(catx, brandx, prodx)}
+                                  onClick={() =>
+                                    product(
+                                      categoryIndex,
+                                      brandIndex,
+                                      productIndex
+                                    )
+                                  }
                                 >
                                   Delete
                                 </SmButton>

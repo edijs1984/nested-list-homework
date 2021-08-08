@@ -8,7 +8,7 @@ export const Createbrand = () => {
 
   const [selected, setSelected] = useState();
   const [newBrand, setNewBrand] = useState();
-  const disabled = !selected || !newBrand;
+  const btnDisabled = !selected || !newBrand;
   const createBrand = () => {
     Create.brand({ ctx: parseInt(selected, 10), name: newBrand });
     setNewBrand("");
@@ -25,7 +25,7 @@ export const Createbrand = () => {
         onInput={(e) => setNewBrand(e.target.value)}
         value={newBrand}
       />
-      <Button disabled={disabled} onClick={() => createBrand()}>
+      <Button disabled={btnDisabled} onClick={() => createBrand()}>
         Create
       </Button>
     </div>
