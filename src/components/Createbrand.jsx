@@ -8,9 +8,9 @@ export const Createbrand = () => {
 
   const [selected, setSelected] = useState();
   const [newBrand, setNewBrand] = useState();
-  const btnDisabled = !selected || !newBrand;
+  const btnDisabled = !selected || !newBrand || selected === "none";
   const createBrand = () => {
-    Create.brand({ ctx: parseInt(selected, 10), name: newBrand });
+    Create.brand({ categoryIndex: parseInt(selected, 10), name: newBrand });
     setNewBrand("");
   };
   return (

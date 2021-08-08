@@ -9,7 +9,7 @@ const Dropdown = ({ setSelected, type, category }) => {
   return (
     <div>
       <ModalSelect onChange={(e) => setSelected(e.target.value)}>
-        <option>Select</option>
+        <option value={"none"}>Select</option>
         {data.map((object, index) => {
           return <option value={index}>{object.name}</option>;
         })}

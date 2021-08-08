@@ -12,13 +12,18 @@ export const Createproduct = () => {
 
   const createProduct = () => {
     Create.product({
-      ctx: parseInt(selectedCat, 10),
-      brandx: parseInt(selectedBrand),
+      categoryIndex: parseInt(selectedCat, 10),
+      brandIndex: parseInt(selectedBrand),
       name: newProduct,
     });
     setNewProduct("");
   };
-  const btnDisabled = !selectedCat || !selectedBrand || !newProduct;
+  const btnDisabled =
+    !selectedCat ||
+    !selectedBrand ||
+    !newProduct ||
+    selectedBrand === "none" ||
+    selectedCat === "none";
 
   return (
     <div>
@@ -27,7 +32,7 @@ export const Createproduct = () => {
       </p>
       <div>Select category</div>
       <Dropdown type={"category"} setSelected={(e) => setSelectedCat(e)} />
-      {selectedCat && (
+      {selectedCat && selectedCat !== "none" && (
         <div>
           <div>Select brand</div>
           <Dropdown
